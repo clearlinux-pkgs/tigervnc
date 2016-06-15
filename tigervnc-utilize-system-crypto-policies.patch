@@ -1,0 +1,13 @@
+diff --git a/common/rfb/Security.cxx b/common/rfb/Security.cxx
+index e623ab5..4987b29 100644
+--- a/common/rfb/Security.cxx
++++ b/common/rfb/Security.cxx
+@@ -52,7 +52,7 @@ static LogWriter vlog("Security");
+ #ifdef HAVE_GNUTLS
+ StringParameter Security::GnuTLSPriority("GnuTLSPriority",
+   "GnuTLS priority string that controls the TLS session’s handshake algorithms",
+-  "NORMAL");
++  "@SYSTEM");
+ #endif
+
+ Security::Security()
