@@ -1,8 +1,8 @@
 Name     : tigervnc
-Version  : 1.6.0
+Version  : 1.7.0
 Release  : 3
-URL      : https://github.com/TigerVNC/tigervnc/archive/v1.6.0.tar.gz
-Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.6.0.tar.gz
+URL      : https://github.com/TigerVNC/tigervnc/archive/v1.7.0.tar.gz
+Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.7.0.tar.gz
 Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.18.4.tar.bz2
 Summary  : A TigerVNC remote display system
 Group    : Development/Tools
@@ -78,15 +78,10 @@ BuildRequires : xtrans-dev
 BuildRequires : zlib-dev
 
 Patch1:  0001-stateless-vncserver.patch
-Patch2:  tigervnc-cookie.patch
 Patch3:  tigervnc-libvnc-os.patch
-Patch4:  tigervnc11-rh692048.patch
-Patch5:  tigervnc-inetd-nowait.patch
 Patch6:  tigervnc-manpages.patch
 Patch7:  tigervnc-getmaster.patch
 Patch8:  tigervnc-shebang.patch
-Patch9:  tigervnc-xserver118.patch
-Patch10: tigervnc-xorg118-QueueKeyboardEvents.patch
 Patch11: tigervnc-utilize-system-crypto-policies.patch
 
 Patch100: tigervnc-xserver116-rebased.patch
@@ -133,7 +128,7 @@ locales components for the tigervnc package.
 
 %prep
 tar -xf %{SOURCE1}
-%setup -q -n tigervnc-1.6.0
+%setup -q -n tigervnc-1.7.0
 
 pushd unix/xserver
 cp -r %{_topdir}/BUILD/xorg-server-1.18.4/*  .
@@ -141,15 +136,10 @@ cp -r %{_topdir}/BUILD/xorg-server-1.18.4/*  .
 popd
 
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
-%patch10 -p1
 %patch11 -p1
 
 %build
@@ -186,6 +176,13 @@ popd
 
 %files
 %defattr(-,root,root,-)
+/usr/share/applications/vncviewer.desktop
+/usr/share/icons/hicolor/16x16/apps/tigervnc.png
+/usr/share/icons/hicolor/22x22/apps/tigervnc.png
+/usr/share/icons/hicolor/24x24/apps/tigervnc.png
+/usr/share/icons/hicolor/32x32/apps/tigervnc.png
+/usr/share/icons/hicolor/48x48/apps/tigervnc.png
+/usr/share/icons/hicolor/scalable/apps/tigervnc.svg
 
 %files bin
 %defattr(-,root,root,-)
