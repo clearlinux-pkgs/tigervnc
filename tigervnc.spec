@@ -3,7 +3,7 @@ Version  : 1.6.0
 Release  : 2
 URL      : https://github.com/TigerVNC/tigervnc/archive/v1.6.0.tar.gz
 Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.6.0.tar.gz
-Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.18.3.tar.bz2
+Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.18.4.tar.bz2
 Summary  : A TigerVNC remote display system
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-2.0+ MIT
@@ -136,7 +136,7 @@ tar -xf %{SOURCE1}
 %setup -q -n tigervnc-1.6.0
 
 pushd unix/xserver
-cp -r %{_topdir}/BUILD/xorg-server-1.18.3/*  .
+cp -r %{_topdir}/BUILD/xorg-server-1.18.4/*  .
 %patch100 -p1 -b .xserver116-rebased
 popd
 
