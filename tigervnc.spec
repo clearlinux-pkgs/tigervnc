@@ -1,6 +1,6 @@
 Name     : tigervnc
 Version  : 1.7.0
-Release  : 3
+Release  : 4
 URL      : https://github.com/TigerVNC/tigervnc/archive/v1.7.0.tar.gz
 Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.7.0.tar.gz
 Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.18.4.tar.bz2
@@ -143,6 +143,8 @@ popd
 %patch11 -p1
 
 %build
+export SOURCE_DATE_EPOCH=1484361909
+
 # build breaks if we don't do cmake on TOPDIR
 #(e.g: we can't do cmake on clr-build)
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir}
@@ -165,6 +167,7 @@ make V=1 %{?_smp_mflags}
 popd
 
 %install
+export SOURCE_DATE_EPOCH=1484361909
 rm -rf %{buildroot}
 %make_install
 
