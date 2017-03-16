@@ -1,8 +1,8 @@
 Name     : tigervnc
-Version  : 1.7.0
-Release  : 4
-URL      : https://github.com/TigerVNC/tigervnc/archive/v1.7.0.tar.gz
-Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.7.0.tar.gz
+Version  : 1.7.1
+Release  : 5
+URL      : https://github.com/TigerVNC/tigervnc/archive/v1.7.1.tar.gz
+Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.7.1.tar.gz
 Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.18.4.tar.bz2
 Summary  : A TigerVNC remote display system
 Group    : Development/Tools
@@ -83,6 +83,7 @@ Patch6:  tigervnc-manpages.patch
 Patch7:  tigervnc-getmaster.patch
 Patch8:  tigervnc-shebang.patch
 Patch11: tigervnc-utilize-system-crypto-policies.patch
+Patch12: Fix-for-shared-memory-leakage.patch
 
 Patch100: tigervnc-xserver116-rebased.patch
 
@@ -128,7 +129,7 @@ locales components for the tigervnc package.
 
 %prep
 tar -xf %{SOURCE1}
-%setup -q -n tigervnc-1.7.0
+%setup -q
 
 pushd unix/xserver
 cp -r %{_topdir}/BUILD/xorg-server-1.18.4/*  .
@@ -141,6 +142,7 @@ popd
 %patch7 -p1
 %patch8 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 export SOURCE_DATE_EPOCH=1484361909
