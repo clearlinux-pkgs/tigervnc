@@ -1,9 +1,9 @@
 Name     : tigervnc
-Version  : 1.7.1
-Release  : 7
-URL      : https://github.com/TigerVNC/tigervnc/archive/v1.7.1.tar.gz
-Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.7.1.tar.gz
-Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.18.4.tar.bz2
+Version  : 1.8.0
+Release  : 8
+URL      : https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
+Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
+Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.19.3.tar.bz2
 Summary  : A TigerVNC remote display system
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-2.0+ MIT
@@ -65,11 +65,12 @@ BuildRequires : pkgconfig(xdmcp)
 BuildRequires : pkgconfig(xf86dgaproto)
 BuildRequires : pkgconfig(xf86driproto)
 BuildRequires : pkgconfig(xfixes)
-BuildRequires : pkgconfig(xfont)
+BuildRequires : pkgconfig(xfont2)
 BuildRequires : pkgconfig(xineramaproto)
 BuildRequires : pkgconfig(xkbfile)
 BuildRequires : pkgconfig(xmu)
 BuildRequires : pkgconfig(xorg-macros)
+BuildRequires : pkgconfig(xrender)
 BuildRequires : pkgconfig(xres)
 BuildRequires : pkgconfig(xshmfence)
 BuildRequires : util-macros-dev
@@ -78,21 +79,15 @@ BuildRequires : xtrans-dev
 BuildRequires : zlib-dev
 
 
-patch1:  cve-2017-7392.patch
-patch2:  cve-2017-7393.patch
-patch3:  cve-2017-7394.patch
-patch4:  cve-2017-7395.patch
-patch5:  cve-2017-7396.nopatch
 
-Patch6:  0001-stateless-vncserver.patch
-Patch7:  tigervnc-libvnc-os.patch
-Patch8:  tigervnc-manpages.patch
-Patch9:  tigervnc-getmaster.patch
-Patch10:  tigervnc-shebang.patch
-Patch11: tigervnc-utilize-system-crypto-policies.patch
-Patch12: Fix-for-shared-memory-leakage.patch
+Patch6:     0001-stateless-vncserver.patch
+Patch7:     tigervnc-libvnc-os.patch
+Patch8:     tigervnc-manpages.patch
+Patch9:     tigervnc-getmaster.patch
+Patch10:    tigervnc-shebang.patch
+Patch11:    tigervnc-utilize-system-crypto-policies.patch
 
-Patch100: tigervnc-xserver116-rebased.patch
+Patch100:   tigervnc-xserver119.patch
 
 %description
 Virtual Network Computing (VNC) is a remote display system which
@@ -139,14 +134,10 @@ tar -xf %{SOURCE1}
 %setup -q
 
 
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 pushd unix/xserver
-cp -r %{_topdir}/BUILD/xorg-server-1.18.4/*  .
-%patch100 -p1 -b .xserver116-rebased
+cp -r %{_topdir}/BUILD/xorg-server-1.19.3/*  .
+%patch100 -p1 -b .xserver119-rebased
 popd
 
 %patch6 -p1
@@ -155,7 +146,6 @@ popd
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
-%patch12 -p1
 
 %build
 export SOURCE_DATE_EPOCH=1484361909
