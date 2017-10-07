@@ -1,6 +1,6 @@
 Name     : tigervnc
 Version  : 1.8.0
-Release  : 9
+Release  : 10
 URL      : https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
 Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
 Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.19.3.tar.bz2
@@ -197,7 +197,6 @@ popd
 /usr/bin/Xvnc
 /usr/bin/vncconfig
 /usr/bin/vncpasswd
-/usr/bin/vncserver
 /usr/bin/vncviewer
 /usr/bin/x0vncserver
 
@@ -209,6 +208,7 @@ popd
 %files extras
 %defattr(-,root,root,-)
 /usr/lib64/xorg/modules/extensions/libvnc.so
+/usr/bin/vncserver
 %exclude /usr/lib64/xorg/modules/extensions/libvnc.la
 
 %files locales -f tigervnc.lang
