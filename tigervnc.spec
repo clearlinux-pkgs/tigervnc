@@ -1,6 +1,6 @@
 Name     : tigervnc
 Version  : 1.8.0
-Release  : 12
+Release  : 13
 URL      : https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
 Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
 Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.19.3.tar.bz2
@@ -14,14 +14,12 @@ Requires: tigervnc-locales
 BuildRequires : cmake
 BuildRequires : dbus-dev
 BuildRequires : doxygen
-BuildRequires : dri2proto-dev
-BuildRequires : dri3proto-dev
+BuildRequires : xorgproto-dev
 BuildRequires : flex
 BuildRequires : fltk-dev
 BuildRequires : font-util-dev
 BuildRequires : freetype-dev
 BuildRequires : gettext
-BuildRequires : glproto-dev
 BuildRequires : graphviz
 BuildRequires : libdmx-dev
 BuildRequires : libgcrypt-dev
