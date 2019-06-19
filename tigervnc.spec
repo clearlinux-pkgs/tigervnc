@@ -1,9 +1,9 @@
 Name     : tigervnc
-Version  : 1.8.0
-Release  : 15
-URL      : https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
-Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.8.0.tar.gz
-Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.19.3.tar.bz2
+Version  : 1.9.0
+Release  : 16
+URL      : https://github.com/TigerVNC/tigervnc/archive/v1.9.0.tar.gz
+Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.9.0.tar.gz
+Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.20.5.tar.bz2
 Summary  : A TigerVNC remote display system
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-2.0+ MIT
@@ -81,11 +81,10 @@ BuildRequires : zlib-dev
 Patch6:     0001-stateless-vncserver.patch
 Patch7:     tigervnc-libvnc-os.patch
 Patch8:     tigervnc-manpages.patch
-Patch9:     tigervnc-getmaster.patch
 Patch10:    tigervnc-shebang.patch
 Patch11:    tigervnc-utilize-system-crypto-policies.patch
 
-Patch100:   tigervnc-xserver119.patch
+Patch100:   tigervnc-xserver120.patch
 
 %description
 Virtual Network Computing (VNC) is a remote display system which
@@ -134,14 +133,13 @@ tar -xf %{SOURCE1}
 
 
 pushd unix/xserver
-cp -r %{_topdir}/BUILD/xorg-server-1.19.3/*  .
-%patch100 -p1 -b .xserver119-rebased
+cp -r %{_topdir}/BUILD/xorg-server-1.20.5/*  .
+%patch100 -p1 -b .xserver120-rebased
 popd
 
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 %patch10 -p1
 %patch11 -p1
 

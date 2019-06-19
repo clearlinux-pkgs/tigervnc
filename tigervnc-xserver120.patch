@@ -1,6 +1,7 @@
-diff -up xserver/configure.ac.xserver116-rebased xserver/configure.ac
---- xserver/configure.ac.xserver116-rebased	2016-09-29 13:14:45.595441590 +0200
-+++ xserver/configure.ac	2016-09-29 13:14:45.631442006 +0200
+diff --git a/configure.ac b/configure.ac
+index af16b0a..d4dc798 100644
+--- a/configure.ac
++++ b/configure.ac
 @@ -74,6 +74,7 @@ dnl forcing an entire recompile.x
  AC_CONFIG_HEADERS(include/version-config.h)
  
@@ -9,7 +10,7 @@ diff -up xserver/configure.ac.xserver116-rebased xserver/configure.ac
  AC_PROG_LN_S
  LT_PREREQ([2.2])
  LT_INIT([disable-static win32-dll])
-@@ -1863,6 +1864,10 @@ if test "x$XVFB" = xyes; then
+@@ -1777,6 +1778,10 @@ if test "x$XVFB" = xyes; then
  	AC_SUBST([XVFB_SYS_LIBS])
  fi
  
@@ -20,7 +21,7 @@ diff -up xserver/configure.ac.xserver116-rebased xserver/configure.ac
  
  dnl Xnest DDX
  
-@@ -1898,6 +1903,8 @@ if test "x$XORG" = xauto; then
+@@ -1812,6 +1817,8 @@ if test "x$XORG" = xauto; then
  fi
  AC_MSG_RESULT([$XORG])
  
@@ -29,7 +30,7 @@ diff -up xserver/configure.ac.xserver116-rebased xserver/configure.ac
  if test "x$XORG" = xyes; then
  	XORG_DDXINCS='-I$(top_srcdir)/hw/xfree86 -I$(top_srcdir)/hw/xfree86/include -I$(top_srcdir)/hw/xfree86/common'
  	XORG_OSINCS='-I$(top_srcdir)/hw/xfree86/os-support -I$(top_srcdir)/hw/xfree86/os-support/bus -I$(top_srcdir)/os'
-@@ -2116,7 +2123,6 @@ if test "x$XORG" = xyes; then
+@@ -2026,7 +2033,6 @@ if test "x$XORG" = xyes; then
  	AC_DEFINE(XORG_SERVER, 1, [Building Xorg server])
  	AC_DEFINE(XORGSERVER, 1, [Building Xorg server])
  	AC_DEFINE(XFree86Server, 1, [Building XFree86 server])
@@ -37,7 +38,7 @@ diff -up xserver/configure.ac.xserver116-rebased xserver/configure.ac
  	AC_DEFINE(NEED_XF86_TYPES, 1, [Need XFree86 typedefs])
  	AC_DEFINE(NEED_XF86_PROTOTYPES, 1, [Need XFree86 helper functions])
  	AC_DEFINE(__XSERVERNAME__, "Xorg", [Name of X server])
-@@ -2691,6 +2697,7 @@ hw/dmx/Makefile
+@@ -2561,6 +2567,7 @@ hw/dmx/Makefile
  hw/dmx/man/Makefile
  hw/vfb/Makefile
  hw/vfb/man/Makefile
@@ -45,9 +46,23 @@ diff -up xserver/configure.ac.xserver116-rebased xserver/configure.ac
  hw/xnest/Makefile
  hw/xnest/man/Makefile
  hw/xwin/Makefile
-diff -up xserver/hw/Makefile.am.xserver116-rebased xserver/hw/Makefile.am
---- xserver/hw/Makefile.am.xserver116-rebased	2016-09-29 13:14:45.601441659 +0200
-+++ xserver/hw/Makefile.am	2016-09-29 13:14:45.631442006 +0200
+diff --git a/dri3/Makefile.am b/dri3/Makefile.am
+index e47a734..00e3689 100644
+--- a/dri3/Makefile.am
++++ b/dri3/Makefile.am
+@@ -1,7 +1,7 @@
+ noinst_LTLIBRARIES = libdri3.la
+ AM_CFLAGS = \
+ 	-DHAVE_XORG_CONFIG_H \
+-	@DIX_CFLAGS@ @XORG_CFLAGS@
++	@DIX_CFLAGS@ @XORG_CFLAGS@ `pkg-config --cflags libdrm`
+ 
+ libdri3_la_SOURCES = \
+ 	dri3.h \
+diff --git a/hw/Makefile.am b/hw/Makefile.am
+index 19895dc..b42fa6e 100644
+--- a/hw/Makefile.am
++++ b/hw/Makefile.am
 @@ -38,7 +38,8 @@ SUBDIRS =			\
  	$(DMX_SUBDIRS)		\
  	$(KDRIVE_SUBDIRS)	\
@@ -58,33 +73,11 @@ diff -up xserver/hw/Makefile.am.xserver116-rebased xserver/hw/Makefile.am
  
  DIST_SUBDIRS = dmx xfree86 vfb xnest xwin xquartz kdrive xwayland
  
-diff -up xserver/mi/miinitext.c.xserver116-rebased xserver/mi/miinitext.c
---- xserver/mi/miinitext.c.xserver116-rebased	2016-09-29 13:14:45.618441855 +0200
-+++ xserver/mi/miinitext.c	2016-09-29 13:14:45.631442006 +0200
-@@ -114,6 +114,10 @@ SOFTWARE.
- #include "micmap.h"
- #include "globals.h"
- 
-+#ifdef TIGERVNC
-+extern void vncExtensionInit(INITARGS);
-+#endif
-+
- /* The following is only a small first step towards run-time
-  * configurable extensions.
-  */
-@@ -238,6 +242,9 @@ EnableDisableExtensionError(const char *
- 
- /* List of built-in (statically linked) extensions */
- static const ExtensionModule staticExtensions[] = {
-+#ifdef TIGERVNC
-+    {vncExtensionInit, "VNC-EXTENSION", NULL},
-+#endif
-     {GEExtensionInit, "Generic Event Extension", &noGEExtension},
-     {ShapeExtensionInit, "SHAPE", NULL},
- #ifdef MITSHM
---- xserver/include/os.h~	2016-10-03 09:07:29.000000000 +0200
-+++ xserver/include/os.h	2016-10-03 14:13:00.013654506 +0200
-@@ -621,7 +621,7 @@
+diff --git a/include/os.h b/include/os.h
+index 3646194..9fc4e8f 100644
+--- a/include/os.h
++++ b/include/os.h
+@@ -633,7 +633,7 @@ LogSetDisplay(void);
  extern _X_EXPORT void
  LogClose(enum ExitCode error);
  extern _X_EXPORT Bool
@@ -93,3 +86,23 @@ diff -up xserver/mi/miinitext.c.xserver116-rebased xserver/mi/miinitext.c
  extern _X_EXPORT void
  LogVWrite(int verb, const char *f, va_list args)
  _X_ATTRIBUTE_PRINTF(2, 0);
+diff --git a/mi/miinitext.c b/mi/miinitext.c
+index b7c7021..688beff 100644
+--- a/mi/miinitext.c
++++ b/mi/miinitext.c
+@@ -107,8 +107,15 @@ SOFTWARE.
+ #include "os.h"
+ #include "globals.h"
+ 
++#ifdef TIGERVNC
++extern void vncExtensionInit(INITARGS);
++#endif
++
+ /* List of built-in (statically linked) extensions */
+ static const ExtensionModule staticExtensions[] = {
++#ifdef TIGERVNC
++    {vncExtensionInit, "VNC-EXTENSION", NULL},
++#endif
+     {GEExtensionInit, "Generic Event Extension", &noGEExtension},
+     {ShapeExtensionInit, "SHAPE", NULL},
+ #ifdef MITSHM
