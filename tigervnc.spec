@@ -1,6 +1,6 @@
 Name     : tigervnc
 Version  : 1.9.0
-Release  : 16
+Release  : 17
 URL      : https://github.com/TigerVNC/tigervnc/archive/v1.9.0.tar.gz
 Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.9.0.tar.gz
 Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.20.5.tar.bz2
