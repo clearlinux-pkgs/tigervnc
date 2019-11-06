@@ -1,0 +1,5 @@
+pushd unix/xserver/hw/vnc
+make install DESTDIR=%{buildroot}
+popd
+
+rm %{buildroot}/usr/lib64/xorg/modules/extensions/libvnc.la

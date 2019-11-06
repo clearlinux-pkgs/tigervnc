@@ -1,0 +1,5 @@
+0001-stateless-vncserver.patch
+tigervnc-libvnc-os.patch
+tigervnc-manpages.patch
+tigervnc-shebang.patch
+tigervnc-utilize-system-crypto-policies.patch

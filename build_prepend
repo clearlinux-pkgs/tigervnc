@@ -1,0 +1,22 @@
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir}
+make V=1 %{?_smp_mflags}
+
+mv unix/xserver unix/xserver-
+mv %{_topdir}/BUILD/xorg-server-1.20.5/ unix/xserver/
+mv unix/xserver-/hw/vnc unix/xserver/hw/
+
+pushd unix/xserver
+patch -p1 < ../xserver120.patch
+autoreconf -fiv
+%configure \
+      --disable-present     --enable-dri3        --disable-dmx         \
+      --disable-static      --disable-dri        --disable-xorg        \
+      --disable-xnest       --disable-xvfb       --disable-xwin        \
+      --disable-xephyr      --disable-kdrive     --disable-config-dbus \
+      --disable-config-hal  --disable-config-udev                      \
+      --without-dtrace      --enable-dri2        --disable-glx         \
+      --enable-glx-tls      --with-pic           --disable-xwayland    \
+      --disable-selective-werror                 --disable-unit-tests  \
+      --disable-devel-docs  --enable-glx         --with-fontrootdir=/usr/share/fonts/X11
+make V=1 %{?_smp_mflags} CFLAGS="${CFLAGS} -I/usr/include/libdrm"
+popd
