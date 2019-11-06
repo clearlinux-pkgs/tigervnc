@@ -71,6 +71,7 @@ BuildRequires : pkgconfig(xorg-macros)
 BuildRequires : pkgconfig(xrender)
 BuildRequires : pkgconfig(xres)
 BuildRequires : pkgconfig(xshmfence)
+BuildRequires : pkgconfig(xtst)
 BuildRequires : util-macros-dev
 BuildRequires : xmlto
 BuildRequires : xtrans-dev
