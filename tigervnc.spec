@@ -4,7 +4,7 @@
 #
 Name     : tigervnc
 Version  : 1.10.1
-Release  : 21
+Release  : 22
 URL      : https://github.com/TigerVNC/tigervnc/archive/v1.10.1/tigervnc-1.10.1.tar.gz
 Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.10.1/tigervnc-1.10.1.tar.gz
 Source1  : ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.20.5.tar.bz2
