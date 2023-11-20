@@ -6,7 +6,7 @@ index e623ab5..4987b29 100644
  #ifdef HAVE_GNUTLS
  StringParameter Security::GnuTLSPriority("GnuTLSPriority",
    "GnuTLS priority string that controls the TLS session’s handshake algorithms",
--  "NORMAL");
+-  "");
 +  "@SYSTEM");
  #endif
 

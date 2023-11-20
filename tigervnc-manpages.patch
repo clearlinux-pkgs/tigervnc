@@ -1,15 +1,3 @@
-diff --git a/unix/vncserver b/unix/vncserver
-index c4d0535..08a9308 100755
---- a/unix/vncserver
-+++ b/unix/vncserver
-@@ -637,6 +637,7 @@ sub Usage
- 	"                 [-geometry <width>x<height>]\n".
- 	"                 [-pixelformat rgbNNN|bgrNNN]\n".
- 	"                 [-fp <font-path>]\n".
-+	"                 [-cc <visual>]\n".
- 	"                 [-fg]\n".
- 	"                 [-autokill]\n".
- 	"                 [-noxstartup]\n".
 diff --git a/vncviewer/vncviewer.cxx b/vncviewer/vncviewer.cxx
 index a2bc029..6923d0e 100644
 --- a/vncviewer/vncviewer.cxx

@@ -1,40 +1,35 @@
-Configure miss: whether to build developer documentation
-Configure miss: whether to build unit test cases
-Configure miss: stropts.h usability
-Configure miss: stropts.h presence
-Configure miss: stropts.h
-Configure miss: getzoneid
-Configure miss: shmctl64
-Configure miss: walkcontext
-Configure miss: timingsafe_memcmp
-Configure miss: arc4random_buf in -lbsd
-Configure miss: sys/agpio.h usability
-Configure miss: sys/agpio.h presence
-Configure miss: sys/agpio.h
-Configure miss: sys/agpgart.h usability
-Configure miss: sys/agpgart.h presence
-Configure miss: sys/agpgart.h
-Configure miss: sys/linker.h
-Configure miss: machine/apmvar.h usability
-Configure miss: machine/apmvar.h presence
-Configure miss: machine/apmvar.h
-Configure miss: to see if we can install the Xorg server as root
-Configure miss: if Xtrans should support os-specific local connections
-Configure miss: authdes_seccreate
-Configure miss: pthread_setname_np(const char*)
-Configure miss: hal
-Configure miss: SHA1Init
 Configure miss: CC_SHA1_Init
-Configure miss: wincrypt.h
+Configure miss: SHA1Init
 Configure miss: SHA1Init in -lmd
-Configure miss: libsha1
+Configure miss: arc4random_buf in -lbsd
+Configure miss: authdes_create
+Configure miss: authdes_seccreate
+Configure miss: dependency style of $(CC)
+Configure miss: g++ option to enable C++11 features
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: getzoneid
+Configure miss: hal
 Configure miss: if SVR4 needs to be defined
-Configure miss: whether to build Xvfb DDX
+Configure miss: if Secure RPC authentication ("SUN-DES-1") should be supported
+Configure miss: if Xtrans should support os-specific local connections
+Configure miss: isastream
+Configure miss: library containing yywrap
+Configure miss: libsha1
+Configure miss: pthread_setname_np(const char*)
+Configure miss: shmctl64
+Configure miss: stropts.h
+Configure miss: sys/agpgart.h
+Configure miss: sys/agpio.h
+Configure miss: sys/linker.h
+Configure miss: timingsafe_memcmp
+Configure miss: to see if we can install the Xorg server as root
+Configure miss: walkcontext
+Configure miss: whether to build XWin DDX
 Configure miss: whether to build Xnest DDX
 Configure miss: whether to build Xorg DDX
-Configure miss: whether to build XWin DDX
-Configure miss: dependency style of $(CC)
-Configure miss: xaw7 xmu xt xpm x11
-Configure miss: whether to build Xdmx DDX
-Configure miss: wayland-client >= 1.3.0 wayland-protocols >= 1.10 libdrm >= 2.4.89 epoxy xf86vidmodeproto >= 2.2.99.1
-Configure miss: whether to build Xwayland DDX
+Configure miss: whether to build Xvfb DDX
+Configure miss: whether to build developer documentation
+Configure miss: whether to build unit test cases
+Configure miss: wincrypt.h
+Configure miss: x86_64-generic-linux-gnu-cpp
+Configure miss: x86_64-generic-linux-gnu-file
