@@ -18,5 +18,5 @@ autoreconf -fiv
       --enable-glx-tls      --with-pic           --disable-xwayland    \
       --disable-selective-werror                 --disable-unit-tests  \
       --disable-devel-docs  --enable-glx         --with-fontrootdir=/usr/share/fonts/X11
-make V=1 %{?_smp_mflags} CFLAGS="${CFLAGS} -I/usr/include/libdrm -I%{_builddir}/%{name}-%{version}/unix/xserver/present"
+make V=1 %{?_smp_mflags} CFLAGS="${CFLAGS} -I/usr/include/libdrm"
 popd
