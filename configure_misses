@@ -1,7 +1,6 @@
 Configure miss: CC_SHA1_Init
 Configure miss: SHA1Init
 Configure miss: SHA1Init in -lmd
-Configure miss: arc4random_buf in -lbsd
 Configure miss: authdes_create
 Configure miss: authdes_seccreate
 Configure miss: dependency style of $(CC)

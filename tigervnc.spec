@@ -7,10 +7,10 @@
 #
 Name     : tigervnc
 Version  : 1.15.0
-Release  : 24
+Release  : 25
 URL      : https://github.com/TigerVNC/tigervnc/archive/v1.15.0/tigervnc-1.15.0.tar.gz
 Source0  : https://github.com/TigerVNC/tigervnc/archive/v1.15.0/tigervnc-1.15.0.tar.gz
-Source1  : https://www.x.org/releases/individual/xserver/xorg-server-21.1.1.tar.xz
+Source1  : https://www.x.org/releases/individual/xserver/xorg-server-21.1.16.tar.xz
 Summary  : A TigerVNC remote display system
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-2.0+ MIT
@@ -193,10 +193,10 @@ services components for the tigervnc package.
 %prep
 %setup -q -n tigervnc-1.15.0
 cd %{_builddir}
-tar xf %{_sourcedir}/xorg-server-21.1.1.tar.xz
+tar xf %{_sourcedir}/xorg-server-21.1.16.tar.xz
 cd %{_builddir}/tigervnc-1.15.0
 mkdir -p unix/xserver2/
-cp -r %{_builddir}/xorg-server-21.1.1/. %{_builddir}/tigervnc-1.15.0/unix/xserver2/
+cp -r %{_builddir}/xorg-server-21.1.16/. %{_builddir}/tigervnc-1.15.0/unix/xserver2/
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -206,7 +206,7 @@ cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=O
 make V=1 %{?_smp_mflags}
 
 mv unix/xserver unix/xserver-
-mv %{_topdir}/BUILD/xorg-server-21.1.1/ unix/xserver/
+mv %{_topdir}/BUILD/xorg-server-21.1.16/ unix/xserver/
 mv unix/xserver-/hw/vnc unix/xserver/hw/
 
 pushd unix/xserver
@@ -229,7 +229,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1741711634
+export SOURCE_DATE_EPOCH=1741712485
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -263,14 +263,14 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1741711634
+export SOURCE_DATE_EPOCH=1741712485
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tigervnc
 cp %{_builddir}/tigervnc-%{version}/LICENCE.TXT %{buildroot}/usr/share/package-licenses/tigervnc/7f7891bc33f6ac443bf927b136696eba605d1d6b || :
 cp %{_builddir}/tigervnc-%{version}/java/com/jcraft/jsch/LICENSE.txt %{buildroot}/usr/share/package-licenses/tigervnc/3d04bb5917db27f91a65e93cb6b0867f6e029b09 || :
 cp %{_builddir}/tigervnc-%{version}/java/com/jcraft/jzlib/LICENSE.txt %{buildroot}/usr/share/package-licenses/tigervnc/6ccf1d8a00f7c9c080bd538df6fd585d39954596 || :
 cp %{_builddir}/tigervnc-%{version}/java/com/tigervnc/vncviewer/LICENCE.TXT %{buildroot}/usr/share/package-licenses/tigervnc/9e08fd547b993d1964afb7a166d5be9752ae1f51 || :
-cp %{_builddir}/xorg-server-21.1.1/COPYING %{buildroot}/usr/share/package-licenses/tigervnc/11d1ae389a1a78f7832586e4c2a0c3c7263b7475 || :
+cp %{_builddir}/xorg-server-21.1.16/COPYING %{buildroot}/usr/share/package-licenses/tigervnc/11d1ae389a1a78f7832586e4c2a0c3c7263b7475 || :
 export GOAMD64=v2
 GOAMD64=v2
 %make_install

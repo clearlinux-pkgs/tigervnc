@@ -2,7 +2,7 @@ cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=O
 make V=1 %{?_smp_mflags}
 
 mv unix/xserver unix/xserver-
-mv %{_topdir}/BUILD/xorg-server-21.1.1/ unix/xserver/
+mv %{_topdir}/BUILD/xorg-server-21.1.16/ unix/xserver/
 mv unix/xserver-/hw/vnc unix/xserver/hw/
 
 pushd unix/xserver
