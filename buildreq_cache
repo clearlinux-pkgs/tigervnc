@@ -1,10 +1,6 @@
-1.13.1
+1.15.0
 Linux-PAM-dev
 bison
+file
 gmp-dev
 gnutls-dev
-pkgconfig(gmp)
-pkgconfig(libavcodec)
-pkgconfig(libavutil)
-pkgconfig(libswscale)
-pkgconfig(libxcvt)

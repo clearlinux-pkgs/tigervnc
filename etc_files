@@ -1,0 +1,10 @@
+/etc/:
+/etc/pam.d:
+/etc/tigervnc:
+pam.d
+tigervnc
+tigervnc
+tigervnc' ']'
+vncserver-config-defaults
+vncserver-config-mandatory
+vncserver.users

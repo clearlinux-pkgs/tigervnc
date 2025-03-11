@@ -6,7 +6,7 @@ mv %{_topdir}/BUILD/xorg-server-21.1.1/ unix/xserver/
 mv unix/xserver-/hw/vnc unix/xserver/hw/
 
 pushd unix/xserver
-patch -p1 < ../xserver21.1.1.patch
+patch -p1 < ../xserver21.patch
 autoreconf -fiv
 %configure \
                             --enable-dri3        --disable-dmx         \

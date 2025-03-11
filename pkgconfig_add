@@ -11,6 +11,7 @@ ice
 inputproto
 libdrm
 libunwind
+libxcvt
 openssl
 pciaccess
 pixman-1

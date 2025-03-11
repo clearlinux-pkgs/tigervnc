@@ -6,6 +6,7 @@ Configure miss: authdes_create
 Configure miss: authdes_seccreate
 Configure miss: dependency style of $(CC)
 Configure miss: g++ option to enable C++11 features
+Configure miss: gcc option to enable large file support
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: getzoneid
 Configure miss: hal
